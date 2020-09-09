@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+
+        <record id="view_res_config_fleet_inherit" model="ir.ui.view">
+                        <field name="name">fleet.config.form.inherit</field>
+                        <field name="model">res.config.settings</field>
+                        <field name="inherit_id" ref="fleet.res_config_settings_view_form"/>
+                        <field name="arch" type="xml">
+                                <xpath expr="//div[@class='o_setting_right_pane']" position="after">     
+                                   
+                                            <label for="gps_api_hash" class="col-lg-4 o_light_label"/>
+                                            <field name="gps_api_hash"/>
+                                        
+                                </xpath>
+                        </field>
+        </record>
+    
+    </data>
+</odoo>

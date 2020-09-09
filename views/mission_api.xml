@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+
+        <record id="view_res_config_fleet_inherit" model="ir.ui.view">
+                        <field name="name">fleet.config.form.inherit</field>
+                        <field name="model">res.config.settings</field>
+                        <field name="inherit_id" ref="fleet.res_config_settings_view_form"/>
+                        <field name="arch" type="xml">
+                               <xpath expr="//div[hasclass('settings')]" position="inside">   
+                                 
+                                  
+                                   <div class="col-18 col-lg-8 o_setting_box">
+                                        <div class="col-20 col-lg-12 o_setting_left_pane"/>
+                                        <div class=" col-20 col-lg-12 o_setting_right_pane">
+                                            <span class="col-16 col-lg-10 o_form_label"></span>
+                                                    <div class="text-muted content-group mt22">
+                                                    <label for="gps_api_hash" class="col-lg-4 o_light_label"/>
+                                                            <field name="gps_api_hash"/>
+                                                    
+                                                    </div>
+                                        </div>
+                                
+                                    </div>
+                    
+                                </xpath>
+                        </field>
+        </record>
+
+        <record id="view_fleet_inherit" model="ir.ui.view">
+                        <field name="name">fleet.form.inherit</field>
+                        <field name="model">fleet.vehicle</field>
+                        <field name="inherit_id" ref="fleet.fleet_vehicle_view_form"/>
+                        <field name="arch" type="xml">
+                                <xpath expr="//field[@name='company_id']" position="after">     
+                                            <field name="gps_id"/>
+                                </xpath>
+                        </field>
+        </record>
+
+
+        <record id="purchase.purchase_rfq" model="ir.actions.act_window">
+           <field name="context">{"search_default_draft":1,"search_default_approved":0,"search_default_to_approve":0}</field>
+        </record>
+    
+    </data>
+</odoo>
