@@ -20,12 +20,13 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'fleet', 'purchase'],
+    'depends': ['base', 'fleet', 'purchase', 'tech_mission'],
 
     # always loaded
     'data': [
         # 'security/ir.model.access.csv',
         #'views/views.xml',
+        'data/cron.xml',
         'views/templates.xml',
         'views/mission_api.xml',
     ],

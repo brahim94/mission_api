@@ -30,3 +30,17 @@ class Tech_Fleet(models.Model):
     _inherit = "fleet.vehicle"
 
     gps_id = fields.Char('GPS ID')
+
+
+class TechMission(models.Model):
+
+    _inherit = "tech.mission"
+
+    date_from = fields.Date(default=fields.Date.today, string="Date from", required="True")
+    date_to = fields.Date(string="Date to")
+    time_from = fields.Float(string='Time from')
+    time_to = fields.Float(string='Time to')
+    device_id = fields.Char(related='vehicle_id.gps_id', string='device ID')
+
+    def get_distance(self):
+        return self.write({'state': 'cancel'})

@@ -39,6 +39,50 @@
                         </field>
         </record>
 
+        <record id="view_mission_inherit" model="ir.ui.view">
+                        <field name="name">mission.form.inherit</field>
+                        <field name="model">tech.mission</field>
+                        <field name="inherit_id" ref="tech_mission.mission_view_form"/>
+                        <field name="arch" type="xml">
+                                <xpath expr="//button[@name='action_cancel']" position="after">     
+                                            <button name="get_distance" string="GET DISTANCE" type="object" class="oe_highlight"/>
+                                </xpath>
+
+                                 <xpath expr="//field[@name='km_effectue']" position="replace">     
+                                            <field name="km_effectue" readonly="0"/>
+                                </xpath>
+                                <xpath expr="//field[@name='date_start']" position="replace">     
+                                            <field name="date_from"/>
+                                </xpath>
+                                <xpath expr="//field[@name='date_from']" position="after">     
+                                            <field name="time_from" widget="float_time"/>
+                                </xpath>
+                                 <xpath expr="//field[@name='date_end']" position="replace">     
+                                            <field name="date_to"/>
+                                </xpath>
+                                <xpath expr="//field[@name='date_to']" position="after">     
+                                            <field name="time_to" widget="float_time"/>
+                                </xpath>
+                                 <xpath expr="//field[@name='vehicle_id']" position="after">     
+                                            <field name="device_id" />
+                                </xpath>
+                        </field>
+        </record>
+
+        <record id="view_km_effectue_field_inherit" model="ir.ui.view">
+            <field name="name">km readonly</field>
+            <field name="model">tech.mission</field>
+            <field name="inherit_id" ref="tech_mission.mission_view_form"/>
+            <field name="groups_id" eval="[(6,0,[ref('base.group_user')])]"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//field[@name='km_effectue']" position="attributes">
+                         <attribute name="attrs">{'readonly':1}</attribute>      
+                    </xpath>
+                </data>
+            </field>
+        </record>
+
 
         <record id="purchase.purchase_rfq" model="ir.actions.act_window">
            <field name="context">{"search_default_draft":1,"search_default_approved":0,"search_default_to_approve":0}</field>
